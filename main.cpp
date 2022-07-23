@@ -1,7 +1,7 @@
-#include <iostream>
-#include <string>
+#include "linked_list.h"
 
 void main(){
-    std::cout << "Are all engines green?\n";
-    
+    Linked_List linked_list1;
+    linked_list1.test_print();
+
 }
