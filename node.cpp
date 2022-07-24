@@ -1,4 +1,3 @@
-#include <iostream>
 #include "node.h"
 
 node::node()
