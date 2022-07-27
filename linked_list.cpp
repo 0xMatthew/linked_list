@@ -82,7 +82,6 @@ void linked_list::prepend(int data)
     head->prev = new_node; // old head's prev pointer now points to new_node
 
     head = new_node; // new_node is now the new head
-    head->prev = nullptr;
 
     new_node = nullptr;
     delete new_node;
@@ -90,6 +89,7 @@ void linked_list::prepend(int data)
 
 void linked_list::remove(int data)
 {
+    std::string element_type;
     std::string succ_mess = "successfully removed integer \"" + std::to_string(data) + "\"\n";
     std::string fail_mess = "failed to remove integer \"" + std::to_string(data) + "\"\n";
     std::string error_mess = "something went wrong\n";
@@ -114,35 +114,41 @@ void linked_list::remove(int data)
 
     if (cur_node != head && cur_node != tail)
     { // conditional check if cur_node IS a middle element
+        element_type = "middle element";
+
         cur_node->prev->next = cur_node->next;
         cur_node->next->prev = cur_node->prev;
 
         cur_node = nullptr;
         delete cur_node;
 
-        std::cout << succ_mess << "middle\n";
+        std::cout << succ_mess << "element type: " << element_type << " \n";
         return;
     }
     else if (cur_node == head)
     { // conditional check returns true if cur_node's data matches and cur_node IS head
+        element_type = "head";
+
         head = cur_node->next;
-        head->prev = nullptr;
+        head->prev = nullptr; // ABSOLUTELY NECESSARY to avoid new head's prev from pointing to address of old head
 
         cur_node = nullptr;
         delete cur_node;
 
-        std::cout << succ_mess << "head\n";
+        std::cout << succ_mess << "element type: " << element_type << " \n";
         return;
     }
     else if (cur_node == tail)
     { // conditional check evaluates to true if cur_node data matches and cur_node IS tail
+        element_type = "tail";
+
         tail = cur_node->prev;
-        tail->next = nullptr;
+        tail->next = nullptr; // ABSOLUTELY NECESSARY to avoid new tail's next from pointing to the address of the old tail
 
         cur_node = nullptr;
         delete cur_node;
 
-        std::cout << succ_mess << "tail\n";
+        std::cout << succ_mess << "element type: " << element_type << " \n";
         return;
     }
     else

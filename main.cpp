@@ -22,5 +22,6 @@ void main()
     l1.remove(1);
 
     l1.print_nodes();
+
     l1.print_nodes_reverse();
 }
