@@ -2,7 +2,8 @@
 #include "node.h"
 #include "linked_list.h"
 
-void main(){
+void main()
+{
     linked_list l1;
 
     l1.append(32);
@@ -17,9 +18,9 @@ void main(){
     l1.prepend(1);
 
     l1.append(1337);
-    
-    l1.remove(1);
-    
-    l1.print_nodes();
 
+    l1.remove(1);
+
+    l1.print_nodes();
+    l1.print_nodes_reverse();
 }
